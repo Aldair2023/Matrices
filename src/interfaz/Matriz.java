@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
+
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,10 +43,10 @@ public class Matriz extends javax.swing.JFrame {
         cmdAuto = new javax.swing.JButton();
         cmdOperacion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
+        tblTablaResultado = new javax.swing.JTable();
+        cmbCombo = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblTablaInicial = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         txtResultado = new javax.swing.JTextField();
 
@@ -61,7 +62,7 @@ public class Matriz extends javax.swing.JFrame {
 
         jLabel3.setText("# De Columnas");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
-        jPanel2.add(txtColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 100, 40));
+        jPanel2.add(txtColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 100, 40));
         jPanel2.add(txtFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 390, 80));
@@ -74,52 +75,66 @@ public class Matriz extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdLimpiar.setText("Limpiar");
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
         cmdCrear.setText("Crear");
-        jPanel3.add(cmdCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        cmdCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCrearActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         cmdManual.setText("Manual");
         jPanel3.add(cmdManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         cmdAuto.setText("Automatico");
+        cmdAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdAutoActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         cmdOperacion.setText("Operacion");
+        cmdOperacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdOperacionActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 106, 400, 110));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTablaResultado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblTablaResultado);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 390, 210));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cant.NumerosPares", "Cant.NumerosImpares", "LetraC", "LetraH" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 60, 50));
+        cmbCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cant.NumerosPares", "Cant.NumerosImpares", "LetraC", "DiagonalPrincipal", "LetraH" }));
+        jPanel1.add(cmbCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 60, 50));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblTablaInicial);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 390, 210));
 
@@ -144,6 +159,129 @@ public class Matriz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
+        // TODO add your handling code here:
+
+        int nFilas, nColumnas;
+        DefaultTableModel tm1, tm2;
+
+        nFilas = Integer.parseInt(txtFilas.getText());
+        nColumnas = Integer.parseInt(txtColumnas.getText());
+
+        tm1 = (DefaultTableModel) tblTablaInicial.getModel();
+        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+
+        tm1.setRowCount(nFilas);
+        tm1.setColumnCount(nColumnas);
+
+        tm2.setRowCount(nFilas);
+        tm2.setColumnCount(nColumnas);
+
+
+    }//GEN-LAST:event_cmdCrearActionPerformed
+
+    private void cmdAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAutoActionPerformed
+        // TODO add your handling code here:
+
+        int nFilas, nColumnas, n;
+
+        nFilas = tblTablaInicial.getColumnCount();
+        nColumnas = tblTablaResultado.getRowCount();
+
+        for (int i = 0; i < nColumnas; i++) {
+            for (int j = 0; j < nFilas; j++) {
+                n = (int) (Math.random() * 100 + 1);
+                tblTablaInicial.setValueAt(n, i, j);
+
+            }
+
+        }
+    }//GEN-LAST:event_cmdAutoActionPerformed
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        // TODO add your handling code here:
+
+        txtFilas.setText("");
+        txtColumnas.setText("");
+        txtFilas.requestFocusInWindow();
+        cmbCombo.setSelectedIndex(0);
+
+        DefaultTableModel tm1, tm2;
+
+        tm1 = (DefaultTableModel) tblTablaInicial.getModel();
+        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+
+        tm1.setRowCount(0);
+        tm1.setColumnCount(0);
+
+        tm2.setRowCount(0);
+        tm2.setColumnCount(0);
+
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void cmdOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionActionPerformed
+        // TODO add your handling code here:
+
+        int op, nFilas, nColumnas, contPares, aux;
+
+        op = cmbCombo.getSelectedIndex();
+        nFilas = tblTablaInicial.getColumnCount();
+        nColumnas = tblTablaResultado.getRowCount();
+
+        switch (op) {
+            case 0:
+                for (int i = 0; i < nFilas; i++) {
+                    for (int j = 0; j < nColumnas; j++) {
+                        aux = (int) tblTablaInicial.getValueAt(i, j);
+                        if (aux % 2 == 0) {
+                            tblTablaResultado.setValueAt(aux, i, j);
+                        }
+
+                    }
+
+                }
+                break;
+        
+        case 2:
+                for (int i = 0; i < nFilas; i++) {
+                    for (int j = 0; j < nColumnas; j++) {
+                        aux = (int) tblTablaInicial.getValueAt(i, j);
+                        if (aux % 2 == 0) {
+                            tblTablaResultado.setValueAt(aux, i, j);
+                        }
+
+                    }
+
+                }
+                break;
+        
+         case 3:
+                for (int i = 0; i < nFilas; i++) {
+                    for (int j = 0; j < nColumnas; j++) {
+                        aux = (int) tblTablaInicial.getValueAt(i, j);
+                        if (i == j) {
+                            tblTablaResultado.setValueAt(aux, i, j);
+                        }
+
+                    }
+
+                }
+                break;
+        case 4:
+                for (int i = 0; i < nFilas; i++) {
+                    for (int j = 0; j < nColumnas; j++) {
+                        aux = (int) tblTablaInicial.getValueAt(i, j);
+                        if (j == i || j == nColumnas-1 || i == (nFilas/2)) {
+                            tblTablaResultado.setValueAt(aux, i, j);
+                        }
+
+                    }
+
+                }
+                break;
+        }
+    }//GEN-LAST:event_cmdOperacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,12 +319,12 @@ public class Matriz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbCombo;
     private javax.swing.JButton cmdAuto;
     private javax.swing.JButton cmdCrear;
     private javax.swing.JButton cmdLimpiar;
     private javax.swing.JButton cmdManual;
     private javax.swing.JButton cmdOperacion;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -196,8 +334,8 @@ public class Matriz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblTablaInicial;
+    private javax.swing.JTable tblTablaResultado;
     private javax.swing.JTextField txtColumnas;
     private javax.swing.JTextField txtFilas;
     private javax.swing.JTextField txtResultado;

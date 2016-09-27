@@ -54,7 +54,7 @@ public class Matriz extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Iniciales", 2, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Iniciales", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("# De Filas");
@@ -71,7 +71,7 @@ public class Matriz extends javax.swing.JFrame {
         jLabel1.setText("Operaciones Matrices");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, 50));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", 2, 0, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdLimpiar.setText("Limpiar");
@@ -91,6 +91,11 @@ public class Matriz extends javax.swing.JFrame {
         jPanel3.add(cmdCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         cmdManual.setText("Manual");
+        cmdManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdManualActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         cmdAuto.setText("Automatico");
@@ -138,7 +143,7 @@ public class Matriz extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 390, 210));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", 2, 0, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtResultado.setEditable(false);
@@ -150,11 +155,11 @@ public class Matriz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
         );
 
         pack();
@@ -242,8 +247,8 @@ public class Matriz extends javax.swing.JFrame {
 
                 }
                 break;
-        
-        case 2:
+
+            case 2:
                 for (int i = 0; i < nFilas; i++) {
                     for (int j = 0; j < nColumnas; j++) {
                         aux = (int) tblTablaInicial.getValueAt(i, j);
@@ -255,8 +260,8 @@ public class Matriz extends javax.swing.JFrame {
 
                 }
                 break;
-        
-         case 3:
+
+            case 3:
                 for (int i = 0; i < nFilas; i++) {
                     for (int j = 0; j < nColumnas; j++) {
                         aux = (int) tblTablaInicial.getValueAt(i, j);
@@ -268,11 +273,11 @@ public class Matriz extends javax.swing.JFrame {
 
                 }
                 break;
-        case 4:
+            case 4:
                 for (int i = 0; i < nFilas; i++) {
                     for (int j = 0; j < nColumnas; j++) {
                         aux = (int) tblTablaInicial.getValueAt(i, j);
-                        if (j == i || j == nColumnas-1 || i == (nFilas/2)) {
+                        if (j == i || j == nColumnas - 1 || i == (nFilas / 2)) {
                             tblTablaResultado.setValueAt(aux, i, j);
                         }
 
@@ -283,9 +288,14 @@ public class Matriz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmdOperacionActionPerformed
 
+    private void cmdManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdManualActionPerformed
+        // TODO add your handling code here:
+           
+    }//GEN-LAST:event_cmdManualActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
